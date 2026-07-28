@@ -1,0 +1,6 @@
+.DS_Store
+.gstack/
+node_modules/
+.env
+.env.*
+deploy/.deploy-state.json

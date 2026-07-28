@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Structura — where messy documents become data you can trust</title>
+  <meta name="description" content="Structura turns your most painful documents — invoices, filings, contracts, scanned forms — into clean, structured, verified data you can trust, build on, and sell." />
+  <meta property="og:title" content="Structura — messy documents become structured data" />
+  <meta property="og:description" content="Any format, any size, text or scanned. We deliver verified, structured data in the form you already work in." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#f8f5ee" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='13' cy='16' r='9' fill='%231a1a17'/%3E%3Ccircle cx='20' cy='16' r='8.2' fill='none' stroke='%23e8833a' stroke-width='2.4'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f8f5ee;
+      --cream-2: #f3efe4;
+      --card: #fffdf7;
+      --ink: #1c1b17;
+      --muted: #625f54;
+      --line: #e6ded0;
+      --accent: #e8833a;
+      --accent-dark: #cf6d29;
+      --accent-soft: #fbeadb;
+      --radius: 18px;
+      --container: 1160px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink); background: var(--cream); line-height: 1.6; font-size: 17px;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--accent); color: #fff; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2.5rem); }
+    .section { padding: clamp(3.5rem, 8vw, 6.5rem) 0; position: relative; }
+    .section--alt { background: var(--cream-2); }
+
+    .eyebrow { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.13em; color: var(--accent); margin-bottom: 1rem; }
+    h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.1; font-weight: 700; }
+    h2 { font-size: clamp(1.8rem, 3.8vw, 2.8rem); max-width: 20ch; }
+    h3 { font-size: 1.18rem; font-weight: 600; line-height: 1.3; }
+    .lead { font-size: clamp(1.05rem, 1.7vw, 1.28rem); color: var(--muted); max-width: 60ch; line-height: 1.6; font-weight: 400; }
+    .muted { color: var(--muted); }
+    p + p { margin-top: 1rem; }
+
+    /* hand-drawn underline for emphasis */
+    .mark-underline {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 22'%3E%3Cpath d='M4 14 C 70 4 100 20 150 11 S 250 4 296 13' fill='none' stroke='%23e8833a' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: 0 92%; background-size: 100% 0.42em; padding-bottom: 0.06em;
+    }
+
+    /* ---------- Nav ---------- */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(248,245,238,0.82);
+      backdrop-filter: saturate(160%) blur(12px); -webkit-backdrop-filter: saturate(160%) blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.2rem; letter-spacing: -0.02em; }
+    .brand svg { width: 30px; height: 30px; flex: 0 0 auto; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { font-size: 0.96rem; color: var(--muted); font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.55rem; font-size: 0.98rem; font-weight: 600;
+      padding: 0.8rem 1.5rem; border-radius: 999px; cursor: pointer; border: 1.5px solid transparent;
+      transition: transform 0.18s var(--ease), background 0.18s, border-color 0.18s, box-shadow 0.18s; white-space: nowrap;
+    }
+    .btn svg { width: 18px; height: 18px; }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 3px 0 var(--accent-dark); }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 5px 0 #b85f22; }
+    .btn-primary:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--accent-dark); }
+    .btn-ghost { background: var(--card); color: var(--ink); border-color: var(--ink); }
+    .btn-ghost:hover { transform: translateY(-2px); box-shadow: 0 4px 0 var(--ink); }
+    .btn-sm { padding: 0.6rem 1.2rem; font-size: 0.92rem; }
+    .btn-light { background: var(--card); color: var(--ink); }
+    .btn-light:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(0,0,0,0.28); }
+    .btn-outline-light { background: transparent; color: #fff8ef; border-color: rgba(255,248,239,0.4); }
+    .btn-outline-light:hover { border-color: #fff8ef; transform: translateY(-2px); }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem); overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
+    .hero h1 { font-size: clamp(2.4rem, 5.6vw, 4.1rem); font-weight: 700; max-width: 15ch; letter-spacing: -0.03em; line-height: 1.05; }
+    .hero .lead { margin-top: 1.5rem; max-width: 46ch; }
+    .hero-cta { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 0.8rem; }
+    .kicker { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.84rem; font-weight: 600; color: var(--accent-dark);
+      background: var(--accent-soft); border: 1.5px solid #f3d6bd; padding: 0.4rem 0.9rem; border-radius: 999px; margin-bottom: 1.5rem; }
+    .kicker svg { width: 15px; height: 15px; }
+    .hero-art { position: relative; }
+    .hero-art svg { width: 100%; height: auto; display: block; }
+
+    /* ---------- Keyword marquee ---------- */
+    .strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--card); padding: 1.9rem 0 2rem; overflow: hidden; }
+    .strip-label { text-align: center; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.15em; color: #a29b8a; font-weight: 600; margin-bottom: 1.3rem; }
+    .marquee { display: flex; overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+    .marquee + .marquee { margin-top: 0.7rem; }
+    .marquee-track { display: flex; gap: 0.7rem; width: max-content; animation: scroll-l 78s linear infinite; }
+    .marquee--rev .marquee-track { animation: scroll-r 92s linear infinite; }
+    .mq-group { display: flex; gap: 0.7rem; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes scroll-l { to { transform: translateX(calc(-50% - 0.35rem)); } }
+    @keyframes scroll-r { from { transform: translateX(calc(-50% - 0.35rem)); } }
+    .pill { white-space: nowrap; font-size: 0.9rem; font-weight: 500; color: var(--muted); background: var(--cream);
+      border: 1.5px solid var(--line); border-radius: 999px; padding: 0.5rem 1rem; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+    .pill:hover { border-color: var(--accent); color: var(--ink); background: var(--accent-soft); }
+    .strip-note { text-align: center; margin-top: 1.55rem; font-size: 0.94rem; color: var(--muted); }
+    .strip-note b { color: var(--ink); font-weight: 600; }
+
+    /* ---------- Blocks ---------- */
+    .block-head { max-width: 64ch; margin-bottom: clamp(2rem, 4vw, 3rem); }
+    .block-head .lead { margin-top: 1rem; }
+    .split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(1.5rem, 5vw, 4rem); align-items: start; }
+    .prose p { font-size: 1.1rem; color: var(--muted); max-width: 66ch; }
+    .prose p strong { color: var(--ink); font-weight: 600; }
+
+    /* steps */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
+    .step { border: 1.5px solid var(--line); border-radius: var(--radius); padding: 1.6rem 1.4rem; background: var(--card); transition: transform 0.2s var(--ease), box-shadow 0.2s, border-color 0.2s; }
+    .step:hover { transform: translateY(-4px); box-shadow: 0 12px 0 -6px var(--accent-soft), 0 16px 34px rgba(28,27,23,0.07); border-color: #e2c6a8; }
+    .step .num { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: var(--accent-soft); color: var(--accent-dark);
+      font-weight: 700; font-size: 1rem; border: 1.5px solid #f0cfae; margin-bottom: 1rem; }
+    .step h3 { margin-bottom: 0.5rem; }
+    .step p { font-size: 0.97rem; color: var(--muted); }
+
+    /* card grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.1rem; }
+    .card { border: 1.5px solid var(--line); border-radius: var(--radius); padding: 1.7rem; background: var(--card); transition: transform 0.2s var(--ease), box-shadow 0.2s, border-color 0.2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(28,27,23,0.07); border-color: #e2c6a8; }
+    .card .ic { width: 42px; height: 42px; margin-bottom: 1rem; color: var(--accent); }
+    .card h3 { margin-bottom: 0.5rem; }
+    .card p { font-size: 0.98rem; color: var(--muted); }
+
+    /* formats */
+    .formats { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.4rem 2.5rem; }
+    .fmt { display: flex; gap: 0.85rem; padding: 1rem 0; border-bottom: 1.5px dashed var(--line); }
+    .fmt .fmt-mark { color: var(--accent); flex: 0 0 auto; line-height: 1.5; font-weight: 700; }
+    .fmt strong { font-weight: 600; }
+    .fmt span.t { color: var(--muted); font-size: 0.97rem; }
+
+    /* verticals */
+    .verticals { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+    .vert { border: 1.5px solid var(--line); border-radius: var(--radius); padding: 1.4rem; background: var(--card); transition: transform 0.2s var(--ease), border-color 0.2s; }
+    .vert:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .vert h3 { font-size: 1.04rem; margin-bottom: 0.35rem; }
+    .vert p { font-size: 0.92rem; color: var(--muted); }
+
+    /* tiers */
+    .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .tier { border: 1.5px solid var(--line); border-radius: var(--radius); padding: 1.8rem 1.6rem; background: var(--card); }
+    .tier.featured { border-color: var(--accent); box-shadow: 0 0 0 1.5px var(--accent); background: linear-gradient(180deg, var(--accent-soft), var(--card) 55%); }
+    .tier .tier-name { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; color: var(--accent-dark); margin-bottom: 0.8rem; }
+    .tier h3 { margin-bottom: 0.6rem; }
+    .tier p { font-size: 0.97rem; color: var(--muted); }
+
+    /* CTA band */
+    .cta-band { background: var(--ink); color: #fdf9f0; position: relative; overflow: hidden; }
+    .cta-band .container { padding-top: clamp(3.5rem, 7vw, 5.5rem); padding-bottom: clamp(3.5rem, 7vw, 5.5rem); text-align: center; position: relative; z-index: 2; }
+    .cta-band h2 { color: #fff; margin: 0 auto; max-width: 22ch; }
+    .cta-band p { color: rgba(253,249,240,0.75); max-width: 58ch; margin: 1.1rem auto 0; font-size: 1.08rem; }
+    .cta-band .hero-cta { justify-content: center; margin-top: 2rem; }
+    .cta-band .doodle { position: absolute; opacity: 0.5; color: var(--accent); z-index: 1; }
+
+    /* FAQ */
+    .faq { max-width: 800px; }
+    details.qa { border-bottom: 1.5px solid var(--line); }
+    details.qa summary { list-style: none; cursor: pointer; padding: 1.1rem 0; font-weight: 600; font-size: 1.08rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    details.qa summary::-webkit-details-marker { display: none; }
+    details.qa summary .chev { flex: 0 0 auto; color: var(--accent); transition: transform 0.25s var(--ease); font-size: 1.5rem; line-height: 1; font-weight: 400; }
+    details.qa[open] summary .chev { transform: rotate(45deg); }
+    details.qa .ans { padding: 0 0 1.2rem; color: var(--muted); font-size: 1.02rem; max-width: 70ch; }
+
+    /* footer */
+    footer.site { border-top: 1px solid var(--line); background: var(--card); }
+    footer.site .container { padding-top: 2.5rem; padding-bottom: 2.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; align-items: center; }
+    footer .fnote { font-size: 0.9rem; color: #a29b8a; }
+
+    /* responsive */
+    @media (max-width: 940px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-art { max-width: 460px; margin: 0.5rem auto 0; order: -1; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .tiers { grid-template-columns: 1fr; }
+      .split { grid-template-columns: 1fr; gap: 1.25rem; }
+    }
+    @media (max-width: 620px) {
+      body { font-size: 16px; }
+      .nav-links { display: none; }
+      .section { padding: 3rem 0; }
+      .steps { grid-template-columns: 1fr; }
+      .hero-cta .btn { flex: 1 1 auto; justify-content: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+      .marquee { -webkit-mask-image: none; mask-image: none; }
+      .marquee-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; }
+      .mq-group { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Structura home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="13" cy="16" r="9" fill="#1c1b17"/><circle cx="20" cy="16" r="8.2" fill="none" stroke="#e8833a" stroke-width="2.4"/></svg>
+        Structura
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#how">How it works</a>
+        <a href="#formats">What we read</a>
+        <a href="#verticals">Industries</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a href="#start" class="btn btn-primary btn-sm">Book a pilot</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="kicker">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3"/><circle cx="12" cy="12" r="3.2"/></svg>
+            Structured, verified data from any document
+          </span>
+          <h1>Where messy documents become <span class="mark-underline">data you can trust</span>.</h1>
+          <p class="lead">Invoices, filings, contracts, scanned forms. The information your business runs on is trapped in pages no dashboard can read. Structura hands it back as clean, organized data you can trust, build on, and sell.</p>
+          <div class="hero-cta">
+            <a href="#start" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+              Book a pilot
+            </a>
+            <a href="#how" class="btn btn-ghost">See how it works</a>
+          </div>
+        </div>
+
+        <!-- HAND-DRAWN STORY ILLUSTRATION: messy document -> verified structured data -->
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 600 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke-linecap="round" stroke-linejoin="round">
+              <!-- dashed orbit -->
+              <path d="M300 60 C 470 55 560 160 540 300 C 522 430 420 500 285 495 C 140 490 55 405 62 275 C 68 150 165 70 300 60 Z"
+                    stroke="#e8833a" stroke-width="2.4" stroke-dasharray="2 12" opacity="0.7"/>
+
+              <!-- messy source document (left, tilted) -->
+              <g transform="rotate(-7 175 300)">
+                <rect x="80" y="180" width="190" height="240" rx="16" fill="#fffdf7" stroke="#1c1b17" stroke-width="3"/>
+                <path d="M78 176 q -10 -8 4 -14" stroke="#1c1b17" stroke-width="3"/>
+                <!-- messy wavy text lines -->
+                <path d="M108 226 q 20 -6 40 0 t 40 0 t 34 -2" stroke="#b9b0a0" stroke-width="4"/>
+                <path d="M108 256 q 24 6 48 0 t 46 0" stroke="#b9b0a0" stroke-width="4"/>
+                <path d="M108 286 q 20 -6 40 0 t 40 2 t 28 -2" stroke="#b9b0a0" stroke-width="4"/>
+                <path d="M108 316 q 26 6 50 0 t 40 0" stroke="#b9b0a0" stroke-width="4"/>
+                <path d="M108 346 q 18 -6 38 0 t 44 0 t 30 -2" stroke="#b9b0a0" stroke-width="4"/>
+                <path d="M108 376 q 24 6 46 0 t 34 0" stroke="#b9b0a0" stroke-width="4"/>
+              </g>
+
+              <!-- transformation arrow + sparkle -->
+              <path d="M286 300 q 34 -22 66 -2" stroke="#1c1b17" stroke-width="3"/>
+              <path d="M344 285 l 10 12 l -14 6" stroke="#1c1b17" stroke-width="3"/>
+              <g stroke="#e8833a" stroke-width="3">
+                <path d="M300 236 l 0 26 M287 249 l 26 0"/>
+              </g>
+
+              <!-- structured result card (right) -->
+              <g>
+                <rect x="352" y="168" width="196" height="236" rx="18" fill="#fffdf7" stroke="#1c1b17" stroke-width="3"/>
+                <!-- header row -->
+                <rect x="352" y="168" width="196" height="42" rx="18" fill="#fbeadb"/>
+                <rect x="352" y="192" width="196" height="18" fill="#fbeadb"/>
+                <path d="M352 210 h 196" stroke="#1c1b17" stroke-width="3"/>
+                <rect x="372" y="182" width="60" height="12" rx="6" fill="#e8833a"/>
+                <!-- column divider -->
+                <path d="M450 210 v 194" stroke="#1c1b17" stroke-width="2.4"/>
+                <!-- rows -->
+                <path d="M352 252 h 196 M352 294 h 196 M352 336 h 196 M352 378 h 196" stroke="#e6ded0" stroke-width="2.4"/>
+                <!-- data chips left column -->
+                <rect x="372" y="226" width="52" height="12" rx="6" fill="#1c1b17"/>
+                <rect x="372" y="268" width="60" height="12" rx="6" fill="#1c1b17"/>
+                <rect x="372" y="310" width="44" height="12" rx="6" fill="#1c1b17"/>
+                <rect x="372" y="352" width="56" height="12" rx="6" fill="#1c1b17"/>
+                <!-- right column values -->
+                <rect x="470" y="226" width="40" height="12" rx="6" fill="#e8833a"/>
+                <rect x="470" y="268" width="30" height="12" rx="6" fill="#c8bfae"/>
+                <rect x="470" y="310" width="46" height="12" rx="6" fill="#e8833a"/>
+                <rect x="470" y="352" width="34" height="12" rx="6" fill="#c8bfae"/>
+              </g>
+
+              <!-- verified check badge -->
+              <g transform="translate(516 150)">
+                <circle cx="0" cy="0" r="24" fill="#e8833a" stroke="#1c1b17" stroke-width="3"/>
+                <path d="M-10 1 l 7 8 l 14 -17" stroke="#fffdf7" stroke-width="4"/>
+              </g>
+
+              <!-- doodles: ringed planet (bottom-left) -->
+              <g transform="translate(96 452)">
+                <circle cx="0" cy="0" r="18" fill="none" stroke="#e8833a" stroke-width="3"/>
+                <ellipse cx="0" cy="0" rx="30" ry="9" fill="none" stroke="#e8833a" stroke-width="3" transform="rotate(-24)"/>
+              </g>
+              <!-- small moon on orbit (top-right) -->
+              <circle cx="540" cy="300" r="9" fill="none" stroke="#1c1b17" stroke-width="3"/>
+              <!-- 4-point sparkles -->
+              <path d="M470 96 q 4 14 16 18 q -14 4 -18 16 q -4 -14 -16 -16 q 14 -6 18 -18 Z" fill="#1c1b17"/>
+              <path d="M120 128 q 3 10 12 13 q -10 3 -13 12 q -3 -10 -12 -12 q 10 -4 13 -13 Z" fill="#e8833a"/>
+              <!-- little asterisks / dots -->
+              <path d="M300 470 v 16 M292 478 h 16 M295 473 l 10 10 M305 473 l -10 10" stroke="#1c1b17" stroke-width="2.6"/>
+              <circle cx="66" cy="270" r="4" fill="#e8833a"/>
+              <circle cx="556" cy="420" r="4" fill="#1c1b17"/>
+              <path d="M40 380 q 12 -10 24 0" stroke="#1c1b17" stroke-width="2.6"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEYWORD MARQUEE -->
+    <div class="strip">
+      <p class="strip-label">Documents we turn into data</p>
+      <div class="marquee" aria-label="Document types we read, row one">
+        <div class="marquee-track">
+          <div class="mq-group">
+            <span class="pill">Invoices</span>
+            <span class="pill">Purchase orders</span>
+            <span class="pill">Receipts</span>
+            <span class="pill">Bank statements</span>
+            <span class="pill">Remittances</span>
+            <span class="pill">Expense reports</span>
+            <span class="pill">Regulatory filings</span>
+            <span class="pill">Prospectuses</span>
+            <span class="pill">Credit agreements</span>
+            <span class="pill">Loan documents</span>
+            <span class="pill">Fund fact sheets</span>
+            <span class="pill">Contracts</span>
+            <span class="pill">Amendments</span>
+            <span class="pill">Leases</span>
+            <span class="pill">Deeds &amp; titles</span>
+            <span class="pill">Appraisal reports</span>
+            <span class="pill">Offering memoranda</span>
+            <span class="pill">Benefit summaries</span>
+            <span class="pill">Explanations of benefits</span>
+            <span class="pill">Formularies</span>
+            <span class="pill">Provider directories</span>
+            <span class="pill">Prior-auth rules</span>
+            <span class="pill">Medical claims</span>
+            <span class="pill">Lab reports</span>
+            <span class="pill">Policy forms</span>
+          </div>
+        </div>
+      </div>
+      <div class="marquee marquee--rev" aria-label="Document types we read, row two">
+        <div class="marquee-track">
+          <div class="mq-group">
+            <span class="pill">Endorsements</span>
+            <span class="pill">Rate cards</span>
+            <span class="pill">Certificates of insurance</span>
+            <span class="pill">Spec sheets</span>
+            <span class="pill">Safety data sheets</span>
+            <span class="pill">Bills of material</span>
+            <span class="pill">Supplier contracts</span>
+            <span class="pill">Bills of lading</span>
+            <span class="pill">Shipping manifests</span>
+            <span class="pill">Packing slips</span>
+            <span class="pill">Permits &amp; licenses</span>
+            <span class="pill">Tariffs</span>
+            <span class="pill">Compliance manuals</span>
+            <span class="pill">Court filings</span>
+            <span class="pill">Patents</span>
+            <span class="pill">Tax forms</span>
+            <span class="pill">Pay stubs</span>
+            <span class="pill">Utility bills</span>
+            <span class="pill">Inspection reports</span>
+            <span class="pill">Warranties</span>
+            <span class="pill">Quotes &amp; estimates</span>
+            <span class="pill">Order forms</span>
+            <span class="pill">Scanned forms</span>
+            <span class="pill">Policy manuals</span>
+          </div>
+        </div>
+      </div>
+      <p class="strip-note">Text-based or scanned, one page or ten thousand. <b>You name it, we read it.</b></p>
+    </div>
+
+    <!-- PROBLEM -->
+    <section class="section" id="problem">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">The problem</p>
+          <h2>The truth lives in documents, not databases.</h2>
+        </div>
+        <div class="prose">
+          <p>Every operationally heavy industry has the same buried asset. The document is dense, inconsistent, and written for humans. The volume is too high to key in by hand and too irregular for a simple template. The stakes are high enough that a wrong number is worse than no number.</p>
+          <p>So the data stays locked up, and every team downstream rebuilds it from scratch, badly. Off-the-shelf OCR gives you text, not data. Generic AI gives you a plausible guess with no way to tell right from wrong. <strong>Neither one is something you can put in front of a customer.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section class="section section--alt" id="what">
+      <div class="container">
+        <div class="block-head">
+          <p class="eyebrow">What we do</p>
+          <h2>We build the <span class="mark-underline">structured layer</span> your documents never had.</h2>
+          <p class="lead">You give us the source material for a domain. We define the exact shape of the data that matters in your world, extract every field from every document, verify it, and deliver it in the form you already work in: a clean spreadsheet, a database table, or a live feed, with a schema you own.</p>
+        </div>
+        <div class="prose">
+          <p>The result is not a pile of text. It is organized information where every entry is a real thing, every detail is clearly defined, and every value has been checked. It is the difference between <strong>"we have the documents"</strong> and <strong>"we have the data."</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="block-head">
+          <p class="eyebrow">How it works</p>
+          <h2>From raw documents to data you can build on.</h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <h3>We map your domain</h3>
+            <p>We define the fields that matter: what an entity is, what each attribute means, what a valid value looks like. This becomes your schema, with real field names and no guessing.</p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <h3>We ingest the sources</h3>
+            <p>PDFs, web pages, scans, photographed pages. Formats that fight back are our normal case, including sources that are geo-blocked, inconsistent, or hundreds of megabytes each.</p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <h3>We extract into the schema</h3>
+            <p>The engine reads each document and populates every field, handling the fan-out across regions and line items so the output sits at the grain you actually query.</p>
+          </div>
+          <div class="step">
+            <div class="num">4</div>
+            <h3>We verify and report gaps</h3>
+            <p>Every extraction is checked. You get the data plus a report of what was found, what the source never contained, and what needs review, before you build on it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMATS -->
+    <section class="section section--alt" id="formats">
+      <div class="container">
+        <div class="block-head">
+          <p class="eyebrow">Any document. Any format. Any size.</p>
+          <h2>The mess in your source is our problem, not your line item.</h2>
+          <p class="lead">A pristine digital file and a stack of crooked scans come back as the same clean, organized result. You cannot tell from the data which source was easy and which was a fax.</p>
+        </div>
+        <div class="formats">
+          <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>Text-based PDFs.</strong> Born-digital files with selectable text. The easy case, done at volume.</span></div>
+          <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>Scanned &amp; image-only PDFs.</strong> Faxes, photocopies, signed forms, photographed pages. Pictures of text, not text. We read them anyway.</span></div>
+          <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>One page or ten thousand.</strong> A single invoice or a thousand-page policy manual runs through the same pipeline.</span></div>
+          <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>Small, large &amp; enormous files.</strong> Catalogs and filings that run to hundreds of megabytes and choke ordinary tools are a normal input.</span></div>
+          <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>Mixed batches.</strong> A folder where every document is a different layout, vintage, and quality, normalized into one schema.</span></div>
+          <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>The template-breakers.</strong> Multi-column layouts, dense tables, stamps, handwriting, footnotes, forms that changed format three times.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFFERENTIATORS -->
+    <section class="section" id="why">
+      <div class="container">
+        <div class="block-head">
+          <p class="eyebrow">Why Structura</p>
+          <h2>Data you can actually put in front of a customer.</h2>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 4v16"/></svg>
+            <h3>A schema you own, not a black box</h3>
+            <p>The data comes out in a shape you defined, with real field names and types. It plugs straight into your database, CRM, ERP, data warehouse, custom product, or your customer's systems, without a cleanup project in between.</p>
+          </div>
+          <div class="card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 8.3-7 9.5C8 19.3 5 15.4 5 11V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3>Verification is the product</h3>
+            <p>Anyone can get a model to guess. We tell you which values were confirmed, which were absent from the source, and which need a human. That is what makes the data safe to sell.</p>
+          </div>
+          <div class="card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4-8 4-8-4z"/><path d="M4 12l8 4 8-4M4 17l8 4 8-4"/></svg>
+            <h3>Built generic from day one</h3>
+            <p>The engine that breaks dense cost and coverage terms into clean, typed fields can be pointed at leases, filings, spec sheets, or invoices just as easily. New vertical, new schema, same machine.</p>
+          </div>
+          <div class="card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+            <h3>We handle the ugly reality</h3>
+            <p>Blocked sources, inconsistent formats, enormous files, entities that fan out across regions. The parts that make everyone else say "custom project, call us" are our default path.</p>
+          </div>
+          <div class="card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <h3>Cost and completeness under control</h3>
+            <p>The engine is bounded so a hard document can't run up a runaway bill, and it sweeps the full field set so nothing quietly gets skipped.</p>
+          </div>
+          <div class="card">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+            <h3>Non-destructive, versioned re-runs</h3>
+            <p>When a source updates, we re-extract without ever clobbering the data you already trust. Your feed stays current with no one re-keying a thing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VERTICALS -->
+    <section class="section section--alt" id="verticals">
+      <div class="container">
+        <div class="block-head">
+          <p class="eyebrow">Where this works</p>
+          <h2>If an industry runs on documents, it needs Structura.</h2>
+          <p class="lead">A few of the North American verticals with exactly this shape, where someone is reading documents by hand and wishing they had the data instead.</p>
+        </div>
+        <div class="verticals">
+          <div class="vert"><h3>Healthcare &amp; benefits</h3><p>Plan documents, formularies, provider directories, prior-auth rules.</p></div>
+          <div class="vert"><h3>Insurance</h3><p>Policy forms, endorsements, rate filings, coverage comparisons across P&amp;C, life, and specialty.</p></div>
+          <div class="vert"><h3>Financial services</h3><p>Prospectuses, credit agreements, fund fact sheets, disclosure filings.</p></div>
+          <div class="vert"><h3>Finance &amp; back office</h3><p>Invoices, purchase orders, receipts, remittances, statements, expense reports across any vendor format.</p></div>
+          <div class="vert"><h3>Real estate</h3><p>Leases, offering memoranda, appraisal reports, HOA and title documents.</p></div>
+          <div class="vert"><h3>Government &amp; regulatory</h3><p>Permits, tariffs, public filings, compliance manuals.</p></div>
+          <div class="vert"><h3>Manufacturing &amp; procurement</h3><p>Spec sheets, safety data sheets, bills of material, supplier contracts.</p></div>
+          <div class="vert"><h3>Legal</h3><p>Contracts, amendments, filings, and case documents at portfolio scale.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENGAGEMENT -->
+    <section class="section" id="engage">
+      <div class="container">
+        <div class="block-head">
+          <p class="eyebrow">How we work with you</p>
+          <h2>Start small. Prove it on your own documents.</h2>
+        </div>
+        <div class="tiers">
+          <div class="tier featured">
+            <div class="tier-name">Pilot</div>
+            <h3>One slice, fully proven</h3>
+            <p>We map the schema and deliver verified data for a well-defined slice of your domain, so you see exactly what structured means for your material. Fixed scope, fixed price.</p>
+          </div>
+          <div class="tier">
+            <div class="tier-name">Scale</div>
+            <h3>Across the full domain</h3>
+            <p>Once the pilot proves out, we expand: more documents, more regions, more entities, refreshed on your schedule.</p>
+          </div>
+          <div class="tier">
+            <div class="tier-name">Ongoing feed</div>
+            <h3>Always current</h3>
+            <p>For sources that change, we run continuous, versioned re-extraction so your dataset stays current without anyone re-keying a thing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="cta-band" id="start">
+      <svg class="doodle" style="top:30px;left:6%;width:46px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M3 12h18M6 6l12 12M18 6L6 18"/></svg>
+      <svg class="doodle" style="bottom:36px;right:8%;width:58px" viewBox="0 0 60 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="18" cy="15" r="10"/><ellipse cx="18" cy="15" rx="26" ry="7" transform="rotate(-20 18 15)"/></svg>
+      <div class="container">
+        <p class="eyebrow" style="color:#f0a666">Why now</p>
+        <h2>Have a document domain that should be a database?</h2>
+        <p>The cost of reading a document carefully just collapsed. The winners in every document-heavy industry will be the ones who turned their filings into data first. We built the machine that does it. Now we point it at your documents.</p>
+        <div class="hero-cta">
+          <a href="mailto:hello@structura.example?subject=Structura%20pilot" class="btn btn-light">Start a pilot</a>
+          <a href="mailto:hello@structura.example?subject=Structura%20call" class="btn btn-outline-light">Book a call</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="block-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>The questions buyers ask first.</h2>
+        </div>
+        <div class="faq">
+          <details class="qa">
+            <summary>How is this different from OCR or a document AI tool? <span class="chev" aria-hidden="true">+</span></summary>
+            <div class="ans">Those give you text or a one-off answer. We give you a defined, verified dataset at the grain you query, with a report of exactly how complete and trustworthy every field is.</div>
+          </details>
+          <details class="qa">
+            <summary>How do we know the data is right? <span class="chev" aria-hidden="true">+</span></summary>
+            <div class="ans">Every extraction runs through a verification pass. You receive a gap report showing what was confirmed, what the source never contained, and what needs review. You never have to take an unchecked number on faith.</div>
+          </details>
+          <details class="qa">
+            <summary>What if our documents are inconsistent or badly formatted? <span class="chev" aria-hidden="true">+</span></summary>
+            <div class="ans">That is the normal case, not the exception. Inconsistent, blocked, oversized, and irregular sources are what the engine was built to handle.</div>
+          </details>
+          <details class="qa">
+            <summary>Our documents are scans, not digital text. Can you still do it? <span class="chev" aria-hidden="true">+</span></summary>
+            <div class="ans">Yes. Scanned, image-only, and photographed documents are handled the same as born-digital PDFs. The output looks identical either way. You cannot tell from the data which source was clean and which was a fax.</div>
+          </details>
+          <details class="qa">
+            <summary>How big can the files be? <span class="chev" aria-hidden="true">+</span></summary>
+            <div class="ans">From a one-page invoice to filings that run to hundreds of megabytes. Size is a matter of runtime, not capability, and it never changes the shape of what you get back.</div>
+          </details>
+          <details class="qa">
+            <summary>Do we own the result? <span class="chev" aria-hidden="true">+</span></summary>
+            <div class="ans">Yes. You own the schema and the data. We provide the extraction engine and the delivery.</div>
+          </details>
+          <details class="qa">
+            <summary>How do you price it? <span class="chev" aria-hidden="true">+</span></summary>
+            <div class="ans">One scoped price per engagement. We look at your material up front and quote a fixed number for the pilot. Whether the documents are text or scanned, tiny or enormous, clean or chaotic, the difficulty is built into the work rather than passed to you as surprise line items.</div>
+          </details>
+          <details class="qa">
+            <summary>How do we start? <span class="chev" aria-hidden="true">+</span></summary>
+            <div class="ans">A fixed-scope pilot on one slice of your domain. Low commitment, real output from your own documents.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="container">
+      <a class="brand" href="#top">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="13" cy="16" r="9" fill="#1c1b17"/><circle cx="20" cy="16" r="8.2" fill="none" stroke="#e8833a" stroke-width="2.4"/></svg>
+        Structura
+      </a>
+      <p class="fnote">The structured layer your documents never had.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Duplicate each marquee row so the CSS loop is seamless.
+    // Skipped when the visitor prefers reduced motion (rows then wrap statically).
+    if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.marquee-track').forEach(function (track) {
+        var group = track.querySelector('.mq-group');
+        if (!group) return;
+        var clone = group.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      });
+    }
+  </script>
+
+</body>
+</html>
