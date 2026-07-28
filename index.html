@@ -155,6 +155,9 @@
     .verticals { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
     .vert { border: 1.5px solid var(--line); border-radius: var(--radius); padding: 1.4rem; background: var(--card); transition: transform 0.2s var(--ease), border-color 0.2s; }
     .vert:hover { transform: translateY(-3px); border-color: var(--accent); }
+    /* the "your industry too" card — the list is illustrative, not a menu */
+    .vert--open { border-style: dashed; border-color: var(--accent); background: var(--accent-soft); }
+    .vert--open h3 { color: var(--accent-dark); }
     .vert h3 { font-size: 1.04rem; margin-bottom: 0.35rem; }
     .vert p { font-size: 0.92rem; color: var(--muted); }
 
@@ -438,6 +441,32 @@
       <p class="strip-note">Text-based or scanned, one page or ten thousand. <b>You name it, we read it.</b></p>
     </div>
 
+    <!-- CHALLENGE -->
+    <section class="section" id="challenge">
+      <div class="container">
+        <div class="challenge">
+          <svg class="doodle" style="top:11%;right:7%;width:172px" viewBox="0 0 190 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <!-- a stack of documents nobody could parse, with a question mark -->
+            <rect x="18" y="34" width="92" height="118" rx="9" transform="rotate(-8 64 93)"/>
+            <rect x="38" y="46" width="92" height="118" rx="9" transform="rotate(6 84 105)"/>
+            <path d="M56 82 q 18 -6 36 1 M54 102 q 20 7 40 -1 M57 122 q 16 -6 31 1" opacity="0.85"/>
+            <path d="M132 44 q 3 -19 20 -17 t 15 19 q -3 12 -15 15 t -9 14" stroke-width="3.6"/>
+            <circle cx="140" cy="94" r="2.4" fill="currentColor" stroke="none"/>
+          </svg>
+          <p class="eyebrow">The standing offer</p>
+          <h2>Bring us the document everyone said couldn't be parsed.</h2>
+          <p class="lead">No format we won't take. No domain we won't map. If it holds the data your business runs on, it is in scope. Name the problem &mdash; we build the pipeline around it.</p>
+          <div class="hero-cta">
+            <a href="mailto:hello@structura.example?subject=Structura%20%E2%80%94%20our%20worst%20document" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+              Send us your worst document
+            </a>
+            <a href="#how" class="btn btn-ghost">See how we'd approach it</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- PROBLEM -->
     <section class="section" id="problem">
       <div class="container split">
@@ -520,32 +549,6 @@
       </div>
     </section>
 
-    <!-- CHALLENGE -->
-    <section class="section" id="challenge">
-      <div class="container">
-        <div class="challenge">
-          <svg class="doodle" style="top:11%;right:7%;width:172px" viewBox="0 0 190 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <!-- a stack of documents nobody could parse, with a question mark -->
-            <rect x="18" y="34" width="92" height="118" rx="9" transform="rotate(-8 64 93)"/>
-            <rect x="38" y="46" width="92" height="118" rx="9" transform="rotate(6 84 105)"/>
-            <path d="M56 82 q 18 -6 36 1 M54 102 q 20 7 40 -1 M57 122 q 16 -6 31 1" opacity="0.85"/>
-            <path d="M132 44 q 3 -19 20 -17 t 15 19 q -3 12 -15 15 t -9 14" stroke-width="3.6"/>
-            <circle cx="140" cy="94" r="2.4" fill="currentColor" stroke="none"/>
-          </svg>
-          <p class="eyebrow">The standing offer</p>
-          <h2>Bring us the document everyone said couldn't be parsed.</h2>
-          <p class="lead">No format we won't take. No domain we won't map. If it holds the data your business runs on, it is in scope. Name the problem &mdash; we build the pipeline around it.</p>
-          <div class="hero-cta">
-            <a href="mailto:hello@structura.example?subject=Structura%20%E2%80%94%20our%20worst%20document" class="btn btn-primary">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
-              Send us your worst document
-            </a>
-            <a href="#how" class="btn btn-ghost">See how we'd approach it</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- DIFFERENTIATORS -->
     <section class="section" id="why">
       <div class="container">
@@ -593,8 +596,8 @@
       <div class="container">
         <div class="block-head">
           <p class="eyebrow">Where this works</p>
-          <h2>If an industry runs on documents, it needs Structura.</h2>
-          <p class="lead">A few of the North American verticals with exactly this shape, where someone is reading documents by hand and wishing they had the data instead.</p>
+          <h2>If it runs on documents, it works here.</h2>
+          <p class="lead">These are examples, not limits. The pattern is always the same &mdash; someone is reading documents by hand and wishing they had the data instead. That pattern does not care what your industry is called.</p>
         </div>
         <div class="verticals">
           <div class="vert"><h3>Healthcare &amp; benefits</h3><p>Plan documents, formularies, provider directories, prior-auth rules.</p></div>
@@ -605,6 +608,7 @@
           <div class="vert"><h3>Government &amp; regulatory</h3><p>Permits, tariffs, public filings, compliance manuals.</p></div>
           <div class="vert"><h3>Manufacturing &amp; procurement</h3><p>Spec sheets, safety data sheets, bills of material, supplier contracts.</p></div>
           <div class="vert"><h3>Legal</h3><p>Contracts, amendments, filings, and case documents at portfolio scale.</p></div>
+          <div class="vert vert--open"><h3>&hellip;and yours</h3><p>Not on this list? That changes nothing. Bring us the documents and the fields you need out of them, and we build for it.</p></div>
         </div>
       </div>
     </section>
