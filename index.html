@@ -141,22 +141,17 @@
     .step p { font-size: 0.97rem; color: var(--muted); }
 
     /* card grid */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.1rem; }
+    /* min(Npx, 100%) rather than a bare Npx floor: on a screen narrower than the
+       floor, a bare value forces the track wider than the viewport. */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1.1rem; }
     .card { border: 1.5px solid var(--line); border-radius: var(--radius); padding: 1.7rem; background: var(--card); transition: transform 0.2s var(--ease), box-shadow 0.2s, border-color 0.2s; }
     .card:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(28,27,23,0.07); border-color: #e2c6a8; }
     .card .ic { width: 42px; height: 42px; margin-bottom: 1rem; color: var(--accent); }
     .card h3 { margin-bottom: 0.5rem; }
     .card p { font-size: 0.98rem; color: var(--muted); }
 
-    /* formats */
-    .formats { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.4rem 2.5rem; }
-    .fmt { display: flex; gap: 0.85rem; padding: 1rem 0; border-bottom: 1.5px dashed var(--line); }
-    .fmt .fmt-mark { color: var(--accent); flex: 0 0 auto; line-height: 1.5; font-weight: 700; }
-    .fmt strong { font-weight: 600; }
-    .fmt span.t { color: var(--muted); font-size: 0.97rem; }
-
     /* verticals */
-    .verticals { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+    .verticals { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1rem; }
     .vert { border: 1.5px solid var(--line); border-radius: var(--radius); padding: 1.4rem; background: var(--card); transition: transform 0.2s var(--ease), border-color 0.2s; }
     .vert:hover { transform: translateY(-3px); border-color: var(--accent); }
     /* the "your industry too" card — the list is illustrative, not a menu */
@@ -259,7 +254,31 @@
       .section { padding: 3rem 0; }
       .steps { grid-template-columns: 1fr; }
       .steps--phased { grid-template-columns: 1fr; }
-      .hero-cta .btn { flex: 1 1 auto; justify-content: center; }
+      /* basis 0 so a CTA pair splits the row evenly instead of sizing to label
+         length. min-width:auto still applies, so an over-long pair wraps and
+         each button then fills its own line. */
+      .hero-cta .btn { flex: 1 1 0; justify-content: center; }
+      /* The panel's own padding stacked on the container's, pushing its text to
+         x=54 while every other section starts at x=20, and squeezing the inner
+         width below the primary button's min-content size. Go full-bleed: the
+         text lands on the page grid and the buttons get the full width. */
+      .challenge {
+        margin-inline: calc(-1 * clamp(1.25rem, 5vw, 2.5rem));
+        padding: 2.25rem clamp(1.25rem, 5vw, 2.5rem);
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+        box-shadow: 0 6px 0 var(--ink);
+      }
+    }
+    /* On small phones a two-up CTA pair can't split evenly once one button
+       carries an icon, so stack them full width instead. Bigger tap targets too. */
+    @media (max-width: 420px) {
+      .hero-cta { flex-direction: column; align-items: stretch; }
+      /* .btn is nowrap by default, so on a ~320px screen a long label overflows
+         and gets clipped by the challenge panel's overflow:hidden. Once the
+         buttons are stacked there's room to wrap instead. */
+      .hero-cta .btn { white-space: normal; text-align: center; }
     }
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; scroll-behavior: auto !important; }
