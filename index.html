@@ -119,6 +119,9 @@
     .pill:hover { border-color: var(--accent); color: var(--ink); background: var(--accent-soft); }
     .strip-note { text-align: center; margin-top: 1.55rem; font-size: 0.94rem; color: var(--muted); }
     .strip-note b { color: var(--ink); font-weight: 600; }
+    /* the hard cases, folded in from the old standalone formats section */
+    .strip-note--sub { margin-top: 0.5rem; font-size: 0.87rem; color: #8b8474; max-width: 62ch;
+      margin-left: auto; margin-right: auto; }
 
     /* ---------- Blocks ---------- */
     .block-head { max-width: 64ch; margin-bottom: clamp(2rem, 4vw, 3rem); }
@@ -126,6 +129,7 @@
     .split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(1.5rem, 5vw, 4rem); align-items: start; }
     .prose p { font-size: 1.1rem; color: var(--muted); max-width: 66ch; }
     .prose p strong { color: var(--ink); font-weight: 600; }
+    .prose--after-steps { margin-top: clamp(1.6rem, 3vw, 2.4rem); }
 
     /* steps */
     .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
@@ -375,7 +379,7 @@
     </section>
 
     <!-- KEYWORD MARQUEE -->
-    <div class="strip">
+    <div class="strip" id="formats">
       <p class="strip-label">Documents we turn into data</p>
       <div class="marquee" aria-label="Document types we read, row one">
         <div class="marquee-track">
@@ -439,6 +443,7 @@
         </div>
       </div>
       <p class="strip-note">Text-based or scanned, one page or ten thousand. <b>You name it, we read it.</b></p>
+      <p class="strip-note strip-note--sub">Faxes and photographed pages. Thousand-page manuals. Files big enough to choke ordinary tools. Multi-column tables, stamps, handwriting, and forms that changed format three times.</p>
     </div>
 
     <!-- CHALLENGE -->
@@ -467,6 +472,28 @@
       </div>
     </section>
 
+    <!-- VERTICALS -->
+    <section class="section section--alt" id="verticals">
+      <div class="container">
+        <div class="block-head">
+          <p class="eyebrow">Where this works</p>
+          <h2>If it runs on documents, it works here.</h2>
+          <p class="lead">These are examples, not limits. The pattern is always the same &mdash; someone is reading documents by hand and wishing they had the data instead. That pattern does not care what your industry is called.</p>
+        </div>
+        <div class="verticals">
+          <div class="vert"><h3>Healthcare &amp; benefits</h3><p>Plan documents, formularies, provider directories, prior-auth rules.</p></div>
+          <div class="vert"><h3>Insurance</h3><p>Policy forms, endorsements, rate filings, coverage comparisons across P&amp;C, life, and specialty.</p></div>
+          <div class="vert"><h3>Financial services</h3><p>Prospectuses, credit agreements, fund fact sheets, disclosure filings.</p></div>
+          <div class="vert"><h3>Finance &amp; back office</h3><p>Invoices, purchase orders, receipts, remittances, statements, expense reports across any vendor format.</p></div>
+          <div class="vert"><h3>Real estate</h3><p>Leases, offering memoranda, appraisal reports, HOA and title documents.</p></div>
+          <div class="vert"><h3>Government &amp; regulatory</h3><p>Permits, tariffs, public filings, compliance manuals.</p></div>
+          <div class="vert"><h3>Manufacturing &amp; procurement</h3><p>Spec sheets, safety data sheets, bills of material, supplier contracts.</p></div>
+          <div class="vert"><h3>Legal</h3><p>Contracts, amendments, filings, and case documents at portfolio scale.</p></div>
+          <div class="vert vert--open"><h3>&hellip;and yours</h3><p>Not on this list? That changes nothing. Bring us the documents and the fields you need out of them, and we build for it.</p></div>
+        </div>
+      </div>
+    </section>
+
     <!-- PROBLEM -->
     <section class="section" id="problem">
       <div class="container split">
@@ -481,76 +508,8 @@
       </div>
     </section>
 
-    <!-- WHAT WE DO -->
-    <section class="section section--alt" id="what">
-      <div class="container">
-        <div class="block-head">
-          <p class="eyebrow">What we do</p>
-          <h2>We build the <span class="mark-underline">structured layer</span> your documents never had.</h2>
-          <p class="lead">You give us the source material for a domain. We define the exact shape of the data that matters in your world, extract every field from every document, verify it, and deliver it in the form you already work in: a clean spreadsheet, a database table, or a live feed, with a schema you own.</p>
-        </div>
-        <div class="prose">
-          <p>The result is not a pile of text. It is organized information where every entry is a real thing, every detail is clearly defined, and every value has been checked. It is the difference between <strong>"we have the documents"</strong> and <strong>"we have the data."</strong></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="section" id="how">
-      <div class="container">
-        <div class="block-head">
-          <p class="eyebrow">How it works</p>
-          <h2>From raw documents to data you can build on.</h2>
-        </div>
-        <div class="steps steps--phased">
-          <div class="phase">Scan</div>
-          <div class="step">
-            <div class="num">1</div>
-            <h3>We map your domain</h3>
-            <p>We define the fields that matter: what an entity is, what each attribute means, what a valid value looks like. This becomes your schema, with real field names and no guessing.</p>
-          </div>
-          <div class="step">
-            <div class="num">2</div>
-            <h3>We ingest the sources</h3>
-            <p>PDFs, web pages, scans, photographed pages. Formats that fight back are our normal case, including sources that are geo-blocked, inconsistent, or hundreds of megabytes each.</p>
-          </div>
-          <div class="phase">Structure</div>
-          <div class="step">
-            <div class="num">3</div>
-            <h3>We extract into the schema</h3>
-            <p>The engine reads each document and populates every field, handling the fan-out across regions and line items so the output sits at the grain you actually query.</p>
-          </div>
-          <div class="phase">Trust</div>
-          <div class="step">
-            <div class="num">4</div>
-            <h3>We verify and report gaps</h3>
-            <p>Every extraction is checked. You get the data plus a report of what was found, what the source never contained, and what needs review, before you build on it.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FORMATS -->
-    <section class="section section--alt" id="formats">
-      <div class="container">
-        <div class="block-head">
-          <p class="eyebrow">Any document. Any format. Any size.</p>
-          <h2>The mess in your source is our problem, not your line item.</h2>
-          <p class="lead">A pristine digital file and a stack of crooked scans come back as the same clean, organized result. You cannot tell from the data which source was easy and which was a fax.</p>
-        </div>
-        <div class="formats">
-          <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>Text-based PDFs.</strong> Born-digital files with selectable text. The easy case, done at volume.</span></div>
-          <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>Scanned &amp; image-only PDFs.</strong> Faxes, photocopies, signed forms, photographed pages. Pictures of text, not text. We read them anyway.</span></div>
-          <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>One page or ten thousand.</strong> A single invoice or a thousand-page policy manual runs through the same pipeline.</span></div>
-          <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>Small, large &amp; enormous files.</strong> Catalogs and filings that run to hundreds of megabytes and choke ordinary tools are a normal input.</span></div>
-          <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>Mixed batches.</strong> A folder where every document is a different layout, vintage, and quality, normalized into one schema.</span></div>
-          <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>The template-breakers.</strong> Multi-column layouts, dense tables, stamps, handwriting, footnotes, forms that changed format three times.</span></div>
-        </div>
-      </div>
-    </section>
-
     <!-- DIFFERENTIATORS -->
-    <section class="section" id="why">
+    <section class="section section--alt" id="why">
       <div class="container">
         <div class="block-head">
           <p class="eyebrow">Why Structura</p>
@@ -591,30 +550,47 @@
       </div>
     </section>
 
-    <!-- VERTICALS -->
-    <section class="section section--alt" id="verticals">
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how">
       <div class="container">
         <div class="block-head">
-          <p class="eyebrow">Where this works</p>
-          <h2>If it runs on documents, it works here.</h2>
-          <p class="lead">These are examples, not limits. The pattern is always the same &mdash; someone is reading documents by hand and wishing they had the data instead. That pattern does not care what your industry is called.</p>
+          <p class="eyebrow">What we do</p>
+          <h2>We build the <span class="mark-underline">structured layer</span> your documents never had.</h2>
+          <p class="lead">You give us the source material for a domain. We define the exact shape of the data that matters in your world, extract every field from every document, verify it, and deliver it in the form you already work in: a clean spreadsheet, a database table, or a live feed, with a schema you own.</p>
         </div>
-        <div class="verticals">
-          <div class="vert"><h3>Healthcare &amp; benefits</h3><p>Plan documents, formularies, provider directories, prior-auth rules.</p></div>
-          <div class="vert"><h3>Insurance</h3><p>Policy forms, endorsements, rate filings, coverage comparisons across P&amp;C, life, and specialty.</p></div>
-          <div class="vert"><h3>Financial services</h3><p>Prospectuses, credit agreements, fund fact sheets, disclosure filings.</p></div>
-          <div class="vert"><h3>Finance &amp; back office</h3><p>Invoices, purchase orders, receipts, remittances, statements, expense reports across any vendor format.</p></div>
-          <div class="vert"><h3>Real estate</h3><p>Leases, offering memoranda, appraisal reports, HOA and title documents.</p></div>
-          <div class="vert"><h3>Government &amp; regulatory</h3><p>Permits, tariffs, public filings, compliance manuals.</p></div>
-          <div class="vert"><h3>Manufacturing &amp; procurement</h3><p>Spec sheets, safety data sheets, bills of material, supplier contracts.</p></div>
-          <div class="vert"><h3>Legal</h3><p>Contracts, amendments, filings, and case documents at portfolio scale.</p></div>
-          <div class="vert vert--open"><h3>&hellip;and yours</h3><p>Not on this list? That changes nothing. Bring us the documents and the fields you need out of them, and we build for it.</p></div>
+        <div class="steps steps--phased">
+          <div class="phase">Scan</div>
+          <div class="step">
+            <div class="num">1</div>
+            <h3>We map your domain</h3>
+            <p>We define the fields that matter: what an entity is, what each attribute means, what a valid value looks like. This becomes your schema, with real field names and no guessing.</p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <h3>We ingest the sources</h3>
+            <p>PDFs, web pages, scans, photographed pages. Formats that fight back are our normal case, including sources that are geo-blocked, inconsistent, or hundreds of megabytes each.</p>
+          </div>
+          <div class="phase">Structure</div>
+          <div class="step">
+            <div class="num">3</div>
+            <h3>We extract into the schema</h3>
+            <p>The engine reads each document and populates every field, handling the fan-out across regions and line items so the output sits at the grain you actually query.</p>
+          </div>
+          <div class="phase">Trust</div>
+          <div class="step">
+            <div class="num">4</div>
+            <h3>We verify and report gaps</h3>
+            <p>Every extraction is checked. You get the data plus a report of what was found, what the source never contained, and what needs review, before you build on it.</p>
+          </div>
+        </div>
+        <div class="prose prose--after-steps">
+          <p>The result is not a pile of text. It is organized information where every entry is a real thing, every detail is clearly defined, and every value has been checked. It is the difference between <strong>"we have the documents"</strong> and <strong>"we have the data."</strong></p>
         </div>
       </div>
     </section>
 
     <!-- ENGAGEMENT -->
-    <section class="section" id="engage">
+    <section class="section section--alt" id="engage">
       <div class="container">
         <div class="block-head">
           <p class="eyebrow">How we work with you</p>

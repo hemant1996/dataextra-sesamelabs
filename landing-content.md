@@ -4,8 +4,6 @@
 
 *Working name — "Structura" is a placeholder. Swap for your final brand before launch.*
 
----
-
 ## Hero
 
 **Scan. Structure. Trust.**
@@ -17,6 +15,35 @@ Invoices. Benefit summaries. Regulatory filings. Spec sheets. Contracts. Rate ca
 Structura turns those documents into structured, verified, queryable data. You hand us the messy source. We hand you clean, organized information you can trust, build on, and sell.
 
 **[ Book a pilot ]  [ See how it works ]**
+
+---
+
+## The standing offer
+
+**Bring us the document everyone said couldn't be parsed.**
+
+No format we won't take. No domain we won't map. If it holds the data your business runs on, it is in scope. Name the problem — we build the pipeline around it.
+
+**[ Send us your worst document ]  [ See how we'd approach it ]**
+
+---
+
+## Where this works
+
+If it runs on documents, it works here. These are examples, not limits:
+
+- **Healthcare and benefits** — plan documents, formularies, provider directories, prior-auth rules.
+- **Insurance (P&C, life, specialty)** — policy forms, endorsements, rate filings, coverage comparisons.
+- **Financial services** — prospectuses, credit agreements, fund fact sheets, disclosure filings.
+- **Finance and back office** — invoices, purchase orders, receipts, remittances, bank and card statements, expense reports across any vendor format.
+- **Real estate** — leases, offering memoranda, appraisal reports, HOA and title documents.
+- **Government and regulatory** — permits, tariffs, public filings, compliance manuals.
+- **Manufacturing and procurement** — spec sheets, safety data sheets, bills of material, supplier contracts.
+- **Legal** — contracts, amendments, filings, case documents at portfolio scale.
+
+- **…and yours** — not on this list? That changes nothing. Bring us the documents and the fields you need out of them, and we build for it.
+
+The pattern is always the same: someone is reading documents by hand and wishing they had the data instead. That pattern does not care what your industry is called.
 
 ---
 
@@ -72,31 +99,6 @@ Re-runs are non-destructive and versioned. When a source updates, we re-extract 
 
 ---
 
-## Any document. Any format. Any size.
-
-The messiness of your source is our problem, not your line item. A pristine digital file and a stack of crooked scans come back as the same clean, organized result.
-
-- **Text-based PDFs.** Born-digital files with selectable text. The easy case, done at volume.
-- **Scanned and image-only PDFs.** Faxes, photocopies, signed forms, photographed pages. Documents that are pictures of text, not text. We read them anyway.
-- **One page or ten thousand.** A single invoice or a thousand-page policy manual runs through the same pipeline.
-- **Small, large, and enormous files.** Catalogs and filings that run to hundreds of megabytes and choke ordinary tools are a normal input, not a special request.
-- **Mixed batches.** A folder where every document is a different layout, vintage, and quality. We normalize the whole pile into one consistent schema.
-- **The parts that break templates.** Multi-column layouts, dense tables, stamps, handwriting, footnotes, forms that changed format three times over the years.
-
-Whether a document is clean text or a wall of scanned faxes, you get the same structured, verified result. The extra difficulty is absorbed into the work. It never shows up as a caveat in your data or a gap in what you receive.
-
----
-
-## The standing offer
-
-**Bring us the document everyone said couldn't be parsed.**
-
-No format we won't take. No domain we won't map. If it holds the data your business runs on, it is in scope. Name the problem — we build the pipeline around it.
-
-**[ Send us your worst document ]  [ See how we'd approach it ]**
-
----
-
 ## What makes us different
 
 **A schema you own, not a black box.** The data comes out in a shape you defined, with real field names and types. It plugs straight into your database, your CRM, your ERP, your data warehouse, your custom product, or your customer's systems, without a cleanup project in between.
@@ -108,23 +110,6 @@ No format we won't take. No domain we won't map. If it holds the data your busin
 **We handle the ugly reality.** Blocked sources, inconsistent formats, enormous files, entities that fan out across regions. The parts that make everyone else quote "custom project, call us" are our default path.
 
 **Cost and completeness under control.** The engine is bounded so a hard document can't run up a runaway bill, and it sweeps the full field set so nothing quietly gets skipped.
-
----
-
-## Where this works
-
-If an industry runs on documents, it needs Structura. A few of the North American verticals with exactly this shape:
-
-- **Healthcare and benefits** — plan documents, formularies, provider directories, prior-auth rules.
-- **Insurance (P&C, life, specialty)** — policy forms, endorsements, rate filings, coverage comparisons.
-- **Financial services** — prospectuses, credit agreements, fund fact sheets, disclosure filings.
-- **Finance and back office** — invoices, purchase orders, receipts, remittances, bank and card statements, expense reports across any vendor format.
-- **Real estate** — leases, offering memoranda, appraisal reports, HOA and title documents.
-- **Government and regulatory** — permits, tariffs, public filings, compliance manuals.
-- **Manufacturing and procurement** — spec sheets, safety data sheets, bills of material, supplier contracts.
-- **Legal** — contracts, amendments, filings, case documents at portfolio scale.
-
-Each of these is a market where someone is currently reading documents by hand and wishing they had the data instead.
 
 ---
 
@@ -186,7 +171,3 @@ The engine fans out across regions and entities and re-runs non-destructively, s
 
 **How do we start?**
 A fixed-scope pilot on one slice of your domain. Low commitment, real output from your own documents.
-
----
-
-*Structura — the structured layer your documents never had.*
