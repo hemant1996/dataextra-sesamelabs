@@ -171,3 +171,18 @@ The engine fans out across regions and entities and re-runs non-destructively, s
 
 **How do we start?**
 A fixed-scope pilot on one slice of your domain. Low commitment, real output from your own documents.
+
+---
+
+## Closing CTA (after the FAQ)
+
+**Still here**
+
+**You already have the documents. Let's get you the data.**
+
+Tell us what you wish you could query and the fields you wish you had. We come back with a proposed schema and a fixed-price pilot scoped to your material.
+
+**[ Start a pilot ]  [ Book a call ]**
+
+*CRM: both buttons are `mailto:` placeholders pending the Zoho hookup. See the
+integration comment above `#closer` in `index.html`.*
