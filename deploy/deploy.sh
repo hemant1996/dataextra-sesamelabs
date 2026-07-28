@@ -23,4 +23,4 @@ INVALIDATION_ID="$(awscf create-invalidation --distribution-id "$DIST_ID" \
   --paths '/*' --query 'Invalidation.Id' --output text)"
 ok "invalidation $INVALIDATION_ID created"
 
-printf '\n\033[32mdeployed.\033[0m  https://%s\n' "$DIST_DOMAIN"
+printf '\n\033[32mdeployed.\033[0m  \033[1m%s\033[0m  (also https://%s)\n' "$SITE_URL" "$DIST_DOMAIN"

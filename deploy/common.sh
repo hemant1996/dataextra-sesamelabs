@@ -16,6 +16,9 @@ AWS_PROFILE="${AWS_PROFILE:-sesamelabs}"
 AWS_REGION="${AWS_REGION:-us-east-1}"
 BUCKET="${BUCKET:-}"                       # defaults to dataextra-sesamelabs-landing-<accountid>
 DIST_COMMENT="dataextra-sesamelabs landing page"
+# Public hostname on the distribution. Served via an ACM cert in us-east-1 with
+# a CNAME at Namecheap; the *.cloudfront.net domain keeps working too.
+SITE_URL="${SITE_URL:-https://structura.sesamelabs.ai}"
 OAC_NAME="dataextra-sesamelabs-landing-oac"
 # ------------------------------------------------------------------------
 
