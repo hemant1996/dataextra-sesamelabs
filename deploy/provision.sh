@@ -70,7 +70,7 @@ if [[ -z "$DIST_ID" || "$DIST_ID" == "None" ]]; then
   "Comment": "$DIST_COMMENT",
   "Enabled": true,
   "DefaultRootObject": "index.html",
-  "PriceClass": "PriceClass_200",
+  "PriceClass": "PriceClass_100",
   "HttpVersion": "http2and3",
   "IsIPV6Enabled": true,
   "Origins": {

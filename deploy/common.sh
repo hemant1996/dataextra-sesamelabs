@@ -10,7 +10,10 @@ STATE_FILE="$SCRIPT_DIR/.deploy-state.json"
 
 # --- overridable settings -----------------------------------------------
 AWS_PROFILE="${AWS_PROFILE:-sesamelabs}"
-AWS_REGION="${AWS_REGION:-ap-south-1}"
+# us-east-1: cheapest region, closest origin for a US launch, and the region
+# CloudFront requires ACM certs to live in — so a future subdomain needs no
+# second region.
+AWS_REGION="${AWS_REGION:-us-east-1}"
 BUCKET="${BUCKET:-}"                       # defaults to dataextra-sesamelabs-landing-<accountid>
 DIST_COMMENT="dataextra-sesamelabs landing page"
 OAC_NAME="dataextra-sesamelabs-landing-oac"

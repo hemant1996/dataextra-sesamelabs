@@ -27,6 +27,24 @@ Hosted on AWS as a static site: **S3 (private) → CloudFront (OAC)**. The bucke
 not public; CloudFront reaches it through an Origin Access Control, which is the
 current AWS-recommended pattern (OAI is legacy).
 
+### Region and price class
+
+The bucket defaults to **us-east-1**. The audience is US, it is AWS's cheapest
+region, and CloudFront only reads ACM certificates from us-east-1 — so keeping
+the bucket there means a future custom subdomain needs nothing outside it.
+
+The distribution runs at **PriceClass_100** (US, Canada, Europe, Israel edges).
+Visitors outside those regions are still served correctly, just from a farther
+edge. If meaningful traffic starts coming from Asia, raise it to
+`PriceClass_200` (adds India, Japan, Singapore) or `PriceClass_All` in
+`deploy/provision.sh`.
+
+Override the region per-run if needed:
+
+```sh
+AWS_REGION=us-west-2 ./deploy/provision.sh
+```
+
 ### One-time provisioning
 
 ```sh
