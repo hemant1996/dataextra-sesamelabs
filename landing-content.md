@@ -186,3 +186,19 @@ Tell us what you wish you could query and the fields you wish you had. We come b
 
 *CRM: both buttons are `mailto:` placeholders pending the Zoho hookup. See the
 integration comment above `#closer` in `index.html`.*
+
+---
+
+## Footer
+
+Structura — the structured layer your documents never had.
+
+**Sesame Labs, Inc.**
+1915 Kramer Lane, Austin, TX 78758
+
+Built in **Austin, Texas**.
+
+© 2026 Sesame Labs, Inc.
+
+*The copyright year is static in `index.html` — bump it, or swap for a
+build-time value.*
