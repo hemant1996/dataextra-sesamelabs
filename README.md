@@ -47,6 +47,19 @@ export AWS_PROFILE=<new-account-profile>
 
 Syncs `index.html` to the bucket and issues a CloudFront invalidation for `/*`.
 
+### Adding a custom subdomain later
+
+The distribution starts on its default `*.cloudfront.net` domain and CloudFront's
+own certificate. Moving to a real subdomain does not require rebuilding anything:
+
+1. Request an ACM certificate for the hostname **in us-east-1** — CloudFront only
+   reads certs from that region, regardless of where the bucket lives.
+2. Add the DNS validation record and wait for the cert to reach `ISSUED`.
+3. Add the hostname to the distribution's `Aliases` and point `ViewerCertificate`
+   at the new cert ARN.
+4. Add a DNS record for the hostname targeting the distribution domain — an
+   ALIAS/A record in Route 53, or a CNAME anywhere else.
+
 ### Cache policy
 
 `index.html` is uploaded with `Cache-Control: no-cache` so browsers always
