@@ -8,6 +8,8 @@
 
 ## Hero
 
+**Scan. Structure. Trust.**
+
 **Your critical data is trapped inside documents nobody can query.**
 
 Invoices. Benefit summaries. Regulatory filings. Spec sheets. Contracts. Rate cards. Policy manuals. The information your business runs on lives in thousands of pages of PDFs and scanned files that no dashboard can read and no analyst has time to key in by hand.
@@ -45,14 +47,23 @@ The result is not a pile of text. It is organized information where every entry 
 
 ## How it works
 
+*The four steps group under the three-beat tagline: **Scan** covers steps 1-2,
+**Structure** is step 3, **Trust** is step 4.*
+
+### Scan
+
 **1. We map your domain.**
 We sit with you and define the fields that matter: what an entity is, what each attribute means, what a valid value looks like. This becomes your schema. Full field names, precise types, no guessing about what a column holds.
 
 **2. We ingest the sources.**
 PDFs, web pages, scanned forms, photographed pages. Formats that fight back are our normal case, including sources that are geo-blocked, inconsistent between documents, or hundreds of megabytes each.
 
+### Structure
+
 **3. We extract into the schema.**
 Our engine reads each document and populates every field. It handles the fan-out (one plan across many counties, one contract across many line items) so the output is at the grain you actually query.
+
+### Trust
 
 **4. We verify and report the gaps.**
 Every extraction is checked. You get a clean dataset plus a gap report: what was found, what the source genuinely never contained, and what needs review. You know exactly how much to trust every column before you build on it.
@@ -73,6 +84,16 @@ The messiness of your source is our problem, not your line item. A pristine digi
 - **The parts that break templates.** Multi-column layouts, dense tables, stamps, handwriting, footnotes, forms that changed format three times over the years.
 
 Whether a document is clean text or a wall of scanned faxes, you get the same structured, verified result. The extra difficulty is absorbed into the work. It never shows up as a caveat in your data or a gap in what you receive.
+
+---
+
+## The standing offer
+
+**Bring us the document everyone said couldn't be parsed.**
+
+No format we won't take. No domain we won't map. If it holds the data your business runs on, it is in scope. Name the problem — we build the pipeline around it.
+
+**[ Send us your worst document ]  [ See how we'd approach it ]**
 
 ---
 

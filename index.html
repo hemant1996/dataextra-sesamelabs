@@ -189,6 +189,40 @@
     footer.site .container { padding-top: 2.5rem; padding-bottom: 2.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; align-items: center; }
     footer .fnote { font-size: 0.9rem; color: #a29b8a; }
 
+    /* ---------- Triad: Scan. Structure. Trust. ---------- */
+    .triad { display: flex; flex-wrap: wrap; gap: 0.3rem 1.6rem; margin-top: 1.5rem; padding-top: 1.3rem;
+      border-top: 1.5px dashed var(--line); font-weight: 700; letter-spacing: 0.14em;
+      font-size: clamp(1rem, 1.7vw, 1.26rem); text-transform: uppercase; line-height: 1.2; }
+    .triad span { white-space: nowrap; }
+    .triad i { font-style: normal; color: var(--accent); }
+
+    /* ---------- Phased steps: the triad as the spine of the process ---------- */
+    .steps--phased { row-gap: 0.85rem; }
+    .phase { display: flex; align-items: center; gap: 0.75rem; font-size: 0.76rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-dark); }
+    .phase::after { content: ""; flex: 1 1 auto; border-top: 1.5px dashed var(--line); }
+    /* Explicit placement so the DOM stays in reading order (phase, its steps,
+       next phase...) — which is exactly what we want when it collapses to
+       one column on mobile. */
+    .steps--phased > :nth-child(1) { grid-area: 1 / 1 / 2 / 3; }
+    .steps--phased > :nth-child(2) { grid-area: 2 / 1 / 3 / 2; }
+    .steps--phased > :nth-child(3) { grid-area: 2 / 2 / 3 / 3; }
+    .steps--phased > :nth-child(4) { grid-area: 1 / 3 / 2 / 4; }
+    .steps--phased > :nth-child(5) { grid-area: 2 / 3 / 3 / 4; }
+    .steps--phased > :nth-child(6) { grid-area: 1 / 4 / 2 / 5; }
+    .steps--phased > :nth-child(7) { grid-area: 2 / 4 / 3 / 5; }
+
+    /* ---------- Challenge band ---------- */
+    .challenge { position: relative; overflow: hidden; border: 2.5px solid var(--ink);
+      border-radius: calc(var(--radius) + 6px); box-shadow: 0 8px 0 var(--ink);
+      background: linear-gradient(180deg, var(--accent-soft), var(--card) 62%);
+      padding: clamp(2rem, 5vw, 3.5rem); }
+    .challenge h2 { max-width: 19ch; }
+    .challenge .lead { margin-top: 1.1rem; max-width: 54ch; }
+    .challenge .hero-cta { margin-top: 1.9rem; }
+    .challenge .doodle { position: absolute; color: var(--accent); opacity: 0.5; pointer-events: none; }
+    @media (max-width: 860px) { .challenge .doodle { display: none; } }
+
     /* responsive */
     @media (max-width: 940px) {
       .hero-grid { grid-template-columns: 1fr; }
@@ -196,12 +230,17 @@
       .steps { grid-template-columns: repeat(2, 1fr); }
       .tiers { grid-template-columns: 1fr; }
       .split { grid-template-columns: 1fr; gap: 1.25rem; }
+      /* :nth-child(n) to match the specificity of the placement rules above */
+      .steps--phased > :nth-child(n) { grid-area: auto; }
+      .steps--phased .phase { grid-column: 1 / -1; }
+      .steps--phased .phase:not(:first-child) { margin-top: 0.9rem; }
     }
     @media (max-width: 620px) {
       body { font-size: 16px; }
       .nav-links { display: none; }
       .section { padding: 3rem 0; }
       .steps { grid-template-columns: 1fr; }
+      .steps--phased { grid-template-columns: 1fr; }
       .hero-cta .btn { flex: 1 1 auto; justify-content: center; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -242,6 +281,7 @@
             Structured, verified data from any document
           </span>
           <h1>Where messy documents become <span class="mark-underline">data you can trust</span>.</h1>
+          <p class="triad"><span>Scan<i>.</i></span><span>Structure<i>.</i></span><span>Trust<i>.</i></span></p>
           <p class="lead">Invoices, filings, contracts, scanned forms. The information your business runs on is trapped in pages no dashboard can read. Structura hands it back as clean, organized data you can trust, build on, and sell.</p>
           <div class="hero-cta">
             <a href="#start" class="btn btn-primary">
@@ -433,7 +473,8 @@
           <p class="eyebrow">How it works</p>
           <h2>From raw documents to data you can build on.</h2>
         </div>
-        <div class="steps">
+        <div class="steps steps--phased">
+          <div class="phase">Scan</div>
           <div class="step">
             <div class="num">1</div>
             <h3>We map your domain</h3>
@@ -444,11 +485,13 @@
             <h3>We ingest the sources</h3>
             <p>PDFs, web pages, scans, photographed pages. Formats that fight back are our normal case, including sources that are geo-blocked, inconsistent, or hundreds of megabytes each.</p>
           </div>
+          <div class="phase">Structure</div>
           <div class="step">
             <div class="num">3</div>
             <h3>We extract into the schema</h3>
             <p>The engine reads each document and populates every field, handling the fan-out across regions and line items so the output sits at the grain you actually query.</p>
           </div>
+          <div class="phase">Trust</div>
           <div class="step">
             <div class="num">4</div>
             <h3>We verify and report gaps</h3>
@@ -473,6 +516,32 @@
           <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>Small, large &amp; enormous files.</strong> Catalogs and filings that run to hundreds of megabytes and choke ordinary tools are a normal input.</span></div>
           <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>Mixed batches.</strong> A folder where every document is a different layout, vintage, and quality, normalized into one schema.</span></div>
           <div class="fmt"><span class="fmt-mark">+</span><span class="t"><strong>The template-breakers.</strong> Multi-column layouts, dense tables, stamps, handwriting, footnotes, forms that changed format three times.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHALLENGE -->
+    <section class="section" id="challenge">
+      <div class="container">
+        <div class="challenge">
+          <svg class="doodle" style="top:11%;right:7%;width:172px" viewBox="0 0 190 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <!-- a stack of documents nobody could parse, with a question mark -->
+            <rect x="18" y="34" width="92" height="118" rx="9" transform="rotate(-8 64 93)"/>
+            <rect x="38" y="46" width="92" height="118" rx="9" transform="rotate(6 84 105)"/>
+            <path d="M56 82 q 18 -6 36 1 M54 102 q 20 7 40 -1 M57 122 q 16 -6 31 1" opacity="0.85"/>
+            <path d="M132 44 q 3 -19 20 -17 t 15 19 q -3 12 -15 15 t -9 14" stroke-width="3.6"/>
+            <circle cx="140" cy="94" r="2.4" fill="currentColor" stroke="none"/>
+          </svg>
+          <p class="eyebrow">The standing offer</p>
+          <h2>Bring us the document everyone said couldn't be parsed.</h2>
+          <p class="lead">No format we won't take. No domain we won't map. If it holds the data your business runs on, it is in scope. Name the problem &mdash; we build the pipeline around it.</p>
+          <div class="hero-cta">
+            <a href="mailto:hello@structura.example?subject=Structura%20%E2%80%94%20our%20worst%20document" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+              Send us your worst document
+            </a>
+            <a href="#how" class="btn btn-ghost">See how we'd approach it</a>
+          </div>
         </div>
       </div>
     </section>
