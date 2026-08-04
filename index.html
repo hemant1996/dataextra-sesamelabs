@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Structura — where messy documents become data you can trust</title>
-  <meta name="description" content="Structura turns your most painful documents — invoices, filings, contracts, scanned forms — into clean, structured, verified data you can trust, build on, and sell." />
-  <meta property="og:title" content="Structura — messy documents become structured data" />
+  <title>Structura · where complex documents become data you can trust</title>
+  <meta name="description" content="Structura turns your most painful documents (invoices, filings, contracts, scanned forms) into clean, structured, verified data you can trust, build on, and sell." />
+  <meta property="og:title" content="Structura · complex documents become structured data" />
   <meta property="og:description" content="Any format, any size, text or scanned. We deliver verified, structured data in the form you already work in." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#f8f5ee" />
@@ -154,11 +154,29 @@
     .verticals { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1rem; }
     .vert { border: 1.5px solid var(--line); border-radius: var(--radius); padding: 1.4rem; background: var(--card); transition: transform 0.2s var(--ease), border-color 0.2s; }
     .vert:hover { transform: translateY(-3px); border-color: var(--accent); }
-    /* the "your industry too" card — the list is illustrative, not a menu */
+    /* the "your industry too" card. The list is illustrative, not a menu */
     .vert--open { border-style: dashed; border-color: var(--accent); background: var(--accent-soft); }
     .vert--open h3 { color: var(--accent-dark); }
     .vert h3 { font-size: 1.04rem; margin-bottom: 0.35rem; }
     .vert p { font-size: 0.92rem; color: var(--muted); }
+    /* the eight industry cards are anchors to their worked demo; the dashed
+       "...and yours" card stays a div, because there is nothing to link to */
+    a.vert { display: flex; flex-direction: column; }
+    a.vert:hover { box-shadow: 0 14px 30px rgba(28,27,23,0.07); }
+    .vert h3 { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+    .vert-go { color: var(--accent); font-weight: 400; transition: transform 0.2s var(--ease); }
+    a.vert:hover .vert-go { transform: translateX(3px); }
+    .vert-cta { margin-top: auto; padding-top: 0.8rem; font-size: 0.82rem; font-weight: 600;
+      color: var(--accent-dark); text-transform: uppercase; letter-spacing: 0.09em; }
+
+    /* ---------- Demos band ---------- */
+    .demos-band { background: var(--card); border-top: 1.5px solid var(--line); border-bottom: 1.5px solid var(--line); }
+    .demos-grid { display: grid; grid-template-columns: 1fr 0.85fr; gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
+    .demo-qs { display: grid; gap: 0.7rem; }
+    .demo-q { border-left: 2.5px solid var(--accent); padding-left: 0.9rem; font-size: 0.98rem; color: var(--ink); }
+    .demo-q b { display: block; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.11em;
+      color: var(--muted); font-weight: 700; margin-bottom: 0.1rem; }
+    @media (max-width: 900px) { .demos-grid { grid-template-columns: 1fr; } }
 
     /* tiers */
     .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
@@ -177,11 +195,11 @@
     .cta-band .doodle { position: absolute; opacity: 0.5; color: var(--accent); z-index: 1; }
 
     /* FAQ */
-    /* closing CTA — centered like the dark band, since CTA moments are the
+    /* closing CTA, centered like the dark band, since CTA moments are the
        one place this page centers. Everything else stays left-aligned. */
     .closer { background: var(--cream-2); border-top: 1.5px solid var(--line); text-align: center;
       padding: clamp(3rem, 6vw, 4.75rem) 0; }
-    /* balance only the centered headings — an orphaned last word reads as a
+    /* balance only the centered headings: an orphaned last word reads as a
        mistake when the text is centred. Left-aligned headings are fine as-is. */
     .closer h2, .cta-band h2 { text-wrap: balance; }
     .closer h2 { margin: 0 auto; max-width: 22ch; }
@@ -224,7 +242,7 @@
       text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-dark); }
     .phase::after { content: ""; flex: 1 1 auto; border-top: 1.5px dashed var(--line); }
     /* Explicit placement so the DOM stays in reading order (phase, its steps,
-       next phase...) — which is exactly what we want when it collapses to
+       next phase...), which is exactly what we want when it collapses to
        one column on mobile. */
     .steps--phased > :nth-child(1) { grid-area: 1 / 1 / 2 / 3; }
     .steps--phased > :nth-child(2) { grid-area: 2 / 1 / 3 / 2; }
@@ -310,6 +328,7 @@
         <a href="#how">How it works</a>
         <a href="#formats">What we read</a>
         <a href="#verticals">Industries</a>
+        <a href="/demos/index.html">See a demo</a>
         <a href="#faq">FAQ</a>
       </nav>
       <a href="#start" class="btn btn-primary btn-sm">Book a pilot</a>
@@ -326,7 +345,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3"/><circle cx="12" cy="12" r="3.2"/></svg>
             Structured, verified data from any document
           </span>
-          <h1>Where messy documents become <span class="mark-underline">data you can trust</span>.</h1>
+          <h1>Where complex documents become <span class="mark-underline">data you can trust</span>.</h1>
           <p class="triad"><span>Scan<i>.</i></span><span>Structure<i>.</i></span><span>Trust<i>.</i></span></p>
           <p class="lead">Invoices, filings, contracts, scanned forms. The information your business runs on is trapped in pages no dashboard can read. Structura hands it back as clean, organized data you can trust, build on, and sell.</p>
           <div class="hero-cta">
@@ -334,11 +353,13 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
               Book a pilot
             </a>
-            <a href="#how" class="btn btn-ghost">See how it works</a>
+            <!-- The worked demos ARE "how it works", shown rather than described.
+                 The nav still carries #how for anyone who wants the prose. -->
+            <a href="/demos/index.html" class="btn btn-ghost">See it on documents like yours</a>
           </div>
         </div>
 
-        <!-- HAND-DRAWN STORY ILLUSTRATION: messy document -> verified structured data -->
+        <!-- HAND-DRAWN STORY ILLUSTRATION: complex document -> verified structured data -->
         <div class="hero-art" aria-hidden="true">
           <svg viewBox="0 0 600 540" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g stroke-linecap="round" stroke-linejoin="round">
@@ -346,11 +367,11 @@
               <path d="M300 60 C 470 55 560 160 540 300 C 522 430 420 500 285 495 C 140 490 55 405 62 275 C 68 150 165 70 300 60 Z"
                     stroke="#e8833a" stroke-width="2.4" stroke-dasharray="2 12" opacity="0.7"/>
 
-              <!-- messy source document (left, tilted) -->
+              <!-- complex source document (left, tilted) -->
               <g transform="rotate(-7 175 300)">
                 <rect x="80" y="180" width="190" height="240" rx="16" fill="#fffdf7" stroke="#1c1b17" stroke-width="3"/>
                 <path d="M78 176 q -10 -8 4 -14" stroke="#1c1b17" stroke-width="3"/>
-                <!-- messy wavy text lines -->
+                <!-- scribbled wavy text lines -->
                 <path d="M108 226 q 20 -6 40 0 t 40 0 t 34 -2" stroke="#b9b0a0" stroke-width="4"/>
                 <path d="M108 256 q 24 6 48 0 t 46 0" stroke="#b9b0a0" stroke-width="4"/>
                 <path d="M108 286 q 20 -6 40 0 t 40 2 t 28 -2" stroke="#b9b0a0" stroke-width="4"/>
@@ -499,7 +520,7 @@
           </svg>
           <p class="eyebrow">The standing offer</p>
           <h2>Bring us the document everyone said couldn't be parsed.</h2>
-          <p class="lead">No format we won't take. No domain we won't map. If it holds the data your business runs on, it is in scope. Name the problem &mdash; we build the pipeline around it.</p>
+          <p class="lead">No format we won't take. No domain we won't map. If it holds the data your business runs on, it is in scope. Name the problem and we build the pipeline around it.</p>
           <div class="hero-cta">
             <a href="mailto:hello@structura.example?subject=Structura%20%E2%80%94%20our%20worst%20document" class="btn btn-primary">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
@@ -517,17 +538,17 @@
         <div class="block-head">
           <p class="eyebrow">Where this works</p>
           <h2>If it runs on documents, it works here.</h2>
-          <p class="lead">These are examples, not limits. The pattern is always the same &mdash; someone is reading documents by hand and wishing they had the data instead. That pattern does not care what your industry is called.</p>
+          <p class="lead">These are examples, not limits. The pattern is always the same: someone is reading documents by hand and wishing they had the data instead. That pattern does not care what your industry is called.</p>
         </div>
         <div class="verticals">
-          <div class="vert"><h3>Healthcare &amp; benefits</h3><p>Plan documents, formularies, provider directories, prior-auth rules.</p></div>
-          <div class="vert"><h3>Insurance</h3><p>Policy forms, endorsements, rate filings, coverage comparisons across P&amp;C, life, and specialty.</p></div>
-          <div class="vert"><h3>Financial services</h3><p>Prospectuses, credit agreements, fund fact sheets, disclosure filings.</p></div>
-          <div class="vert"><h3>Finance &amp; back office</h3><p>Invoices, purchase orders, receipts, remittances, statements, expense reports across any vendor format.</p></div>
-          <div class="vert"><h3>Real estate</h3><p>Leases, offering memoranda, appraisal reports, HOA and title documents.</p></div>
-          <div class="vert"><h3>Government &amp; regulatory</h3><p>Permits, tariffs, public filings, compliance manuals.</p></div>
-          <div class="vert"><h3>Manufacturing &amp; procurement</h3><p>Spec sheets, safety data sheets, bills of material, supplier contracts.</p></div>
-          <div class="vert"><h3>Legal</h3><p>Contracts, amendments, filings, and case documents at portfolio scale.</p></div>
+          <a class="vert" href="/demos/healthcare-benefits.html"><h3>Healthcare &amp; benefits <span class="vert-go">&rarr;</span></h3><p>Plan documents, formularies, provider directories, prior-auth rules.</p><span class="vert-cta">See the worked demo</span></a>
+          <a class="vert" href="/demos/insurance.html"><h3>Insurance <span class="vert-go">&rarr;</span></h3><p>Policy forms, endorsements, rate filings, coverage comparisons across P&amp;C, life, and specialty.</p><span class="vert-cta">See the worked demo</span></a>
+          <a class="vert" href="/demos/financial-services.html"><h3>Financial services <span class="vert-go">&rarr;</span></h3><p>Prospectuses, credit agreements, fund fact sheets, disclosure filings.</p><span class="vert-cta">See the worked demo</span></a>
+          <a class="vert" href="/demos/back-office.html"><h3>Finance &amp; back office <span class="vert-go">&rarr;</span></h3><p>Invoices, purchase orders, receipts, remittances, statements, expense reports across any vendor format.</p><span class="vert-cta">See the worked demo</span></a>
+          <a class="vert" href="/demos/real-estate.html"><h3>Real estate <span class="vert-go">&rarr;</span></h3><p>Leases, offering memoranda, appraisal reports, HOA and title documents.</p><span class="vert-cta">See the worked demo</span></a>
+          <a class="vert" href="/demos/government.html"><h3>Government &amp; regulatory <span class="vert-go">&rarr;</span></h3><p>Permits, tariffs, public filings, compliance manuals.</p><span class="vert-cta">See the worked demo</span></a>
+          <a class="vert" href="/demos/manufacturing.html"><h3>Manufacturing &amp; procurement <span class="vert-go">&rarr;</span></h3><p>Spec sheets, safety data sheets, bills of material, supplier contracts.</p><span class="vert-cta">See the worked demo</span></a>
+          <a class="vert" href="/demos/legal.html"><h3>Legal <span class="vert-go">&rarr;</span></h3><p>Contracts, amendments, filings, and case documents at portfolio scale.</p><span class="vert-cta">See the worked demo</span></a>
           <div class="vert vert--open"><h3>&hellip;and yours</h3><p>Not on this list? That changes nothing. Bring us the documents and the fields you need out of them, and we build for it.</p></div>
         </div>
       </div>
@@ -655,6 +676,29 @@
       </div>
     </section>
 
+    <!-- DEMOS -->
+    <section class="section demos-band" id="demos">
+      <div class="container demos-grid">
+        <div>
+          <p class="eyebrow">See it worked through</p>
+          <h2>Every claim on this page, on a real-shaped document.</h2>
+          <p class="lead">Eight worked examples, one per industry. Each takes the page nobody can
+             query and walks it all the way to verified data: the fields we would map, the file you
+             would receive, what was confirmed and what the source never contained, and what it
+             costs you to keep doing it by hand.</p>
+          <div class="hero-cta">
+            <a href="/demos/index.html" class="btn btn-primary">Browse all eight</a>
+          </div>
+        </div>
+        <div class="demo-qs">
+          <p class="demo-q"><b>Real estate</b>Which leases expire in the next 18 months with no option to renew?</p>
+          <p class="demo-q"><b>Legal</b>Which contracts auto-renew and carry uncapped indemnity?</p>
+          <p class="demo-q"><b>Manufacturing</b>Which of our parts contain this substance above the reportable threshold?</p>
+          <p class="demo-q"><b>Finance</b>What did we actually pay this vendor, across fourteen invoice formats?</p>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA BAND -->
     <section class="cta-band" id="start">
       <svg class="doodle" style="top:30px;left:6%;width:46px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M3 12h18M6 6l12 12M18 6L6 18"/></svg>
@@ -721,7 +765,7 @@
          replace the two <a> tags with a form posting to the Zoho
          WebForm endpoint, or swap the hrefs for a Zoho booking link.
          The same placeholders appear in the hero, the challenge band
-         (#challenge), and the dark CTA band (#start) — grep for
+         (#challenge), and the dark CTA band (#start). Grep for
          "structura.example" to find all of them.
          ============================================================ -->
     <section class="section closer" id="closer">

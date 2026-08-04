@@ -31,7 +31,7 @@ else
   ok "bucket created"
 fi
 
-# The bucket stays private end to end — CloudFront is the only reader.
+# The bucket stays private end to end. CloudFront is the only reader.
 aws_ s3api put-public-access-block --bucket "$BUCKET" \
   --public-access-block-configuration \
   "BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true" >/dev/null

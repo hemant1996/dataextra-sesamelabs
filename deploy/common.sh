@@ -11,7 +11,7 @@ STATE_FILE="$SCRIPT_DIR/.deploy-state.json"
 # --- overridable settings -----------------------------------------------
 AWS_PROFILE="${AWS_PROFILE:-sesamelabs}"
 # us-east-1: cheapest region, closest origin for a US launch, and the region
-# CloudFront requires ACM certs to live in — so a future subdomain needs no
+# CloudFront requires ACM certs to live in, so a future subdomain needs no
 # second region.
 AWS_REGION="${AWS_REGION:-us-east-1}"
 BUCKET="${BUCKET:-}"                       # defaults to dataextra-sesamelabs-landing-<accountid>
@@ -58,7 +58,7 @@ resolve_bucket() {
 }
 
 read_state() {
-  [[ -f "$STATE_FILE" ]] || die "no $STATE_FILE — run ./deploy/provision.sh first"
+  [[ -f "$STATE_FILE" ]] || die "no $STATE_FILE. Run ./deploy/provision.sh first"
   BUCKET="$(jq -r .bucket "$STATE_FILE")"
   DIST_ID="$(jq -r .distributionId "$STATE_FILE")"
   DIST_DOMAIN="$(jq -r .distributionDomain "$STATE_FILE")"

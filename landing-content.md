@@ -2,7 +2,7 @@
 
 ### Turn your most painful documents into clean, structured data.
 
-*Working name — "Structura" is a placeholder. Swap for your final brand before launch.*
+*Working name: "Structura" is a placeholder. Swap for your final brand before launch.*
 
 ## Hero
 
@@ -12,7 +12,7 @@
 
 Invoices. Benefit summaries. Regulatory filings. Spec sheets. Contracts. Rate cards. Policy manuals. The information your business runs on lives in thousands of pages of PDFs and scanned files that no dashboard can read and no analyst has time to key in by hand.
 
-Structura turns those documents into structured, verified, queryable data. You hand us the messy source. We hand you clean, organized information you can trust, build on, and sell.
+Structura turns those documents into structured, verified, queryable data. You hand us the complex source. We hand you clean, organized information you can trust, build on, and sell.
 
 **[ Book a pilot ]  [ See how it works ]**
 
@@ -22,7 +22,7 @@ Structura turns those documents into structured, verified, queryable data. You h
 
 **Bring us the document everyone said couldn't be parsed.**
 
-No format we won't take. No domain we won't map. If it holds the data your business runs on, it is in scope. Name the problem — we build the pipeline around it.
+No format we won't take. No domain we won't map. If it holds the data your business runs on, it is in scope. Name the problem and we build the pipeline around it.
 
 **[ Send us your worst document ]  [ See how we'd approach it ]**
 
@@ -32,16 +32,16 @@ No format we won't take. No domain we won't map. If it holds the data your busin
 
 If it runs on documents, it works here. These are examples, not limits:
 
-- **Healthcare and benefits** — plan documents, formularies, provider directories, prior-auth rules.
-- **Insurance (P&C, life, specialty)** — policy forms, endorsements, rate filings, coverage comparisons.
-- **Financial services** — prospectuses, credit agreements, fund fact sheets, disclosure filings.
-- **Finance and back office** — invoices, purchase orders, receipts, remittances, bank and card statements, expense reports across any vendor format.
-- **Real estate** — leases, offering memoranda, appraisal reports, HOA and title documents.
-- **Government and regulatory** — permits, tariffs, public filings, compliance manuals.
-- **Manufacturing and procurement** — spec sheets, safety data sheets, bills of material, supplier contracts.
-- **Legal** — contracts, amendments, filings, case documents at portfolio scale.
+- **Healthcare and benefits**: plan documents, formularies, provider directories, prior-auth rules.
+- **Insurance (P&C, life, specialty)**: policy forms, endorsements, rate filings, coverage comparisons.
+- **Financial services**: prospectuses, credit agreements, fund fact sheets, disclosure filings.
+- **Finance and back office**: invoices, purchase orders, receipts, remittances, bank and card statements, expense reports across any vendor format.
+- **Real estate**: leases, offering memoranda, appraisal reports, HOA and title documents.
+- **Government and regulatory**: permits, tariffs, public filings, compliance manuals.
+- **Manufacturing and procurement**: spec sheets, safety data sheets, bills of material, supplier contracts.
+- **Legal**: contracts, amendments, filings, case documents at portfolio scale.
 
-- **…and yours** — not on this list? That changes nothing. Bring us the documents and the fields you need out of them, and we build for it.
+- **…and yours**. Not on this list? That changes nothing. Bring us the documents and the fields you need out of them, and we build for it.
 
 The pattern is always the same: someone is reading documents by hand and wishing they had the data instead. That pattern does not care what your industry is called.
 
@@ -191,7 +191,7 @@ integration comment above `#closer` in `index.html`.*
 
 ## Footer
 
-Structura — the structured layer your documents never had.
+Structura, the structured layer your documents never had.
 
 **Sesame Labs, Inc.**
 1915 Kramer Lane, Austin, TX 78758
@@ -200,5 +200,5 @@ Built in **Austin, Texas**.
 
 © 2026 Sesame Labs, Inc.
 
-*The copyright year is static in `index.html` — bump it, or swap for a
+*The copyright year is static in `index.html`, bump it, or swap for a
 build-time value.*
